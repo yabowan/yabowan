@@ -43,6 +43,19 @@ textarea {
   font: inherit;
 }
 
+button,
+textarea,
+input,
+select,
+label,
+a,
+[role="button"] {
+  position: relative;
+  z-index: 20;
+  pointer-events: auto;
+  touch-action: manipulation;
+}
+
 .backdrop {
   position: fixed;
   inset: 0;
@@ -122,6 +135,7 @@ textarea {
   box-shadow: 4px 4px 0 var(--shadow);
   font-size: 12px;
   letter-spacing: 1px;
+  pointer-events: none;
 }
 
 .iphone-shell {
@@ -151,6 +165,7 @@ textarea {
   background: #050505;
   border: 4px solid #1e1e1e;
   z-index: 3;
+  pointer-events: none;
 }
 
 .app-shell {
@@ -1320,6 +1335,7 @@ p {
 
 .building-showcase > .intro-building {
   z-index: 2;
+  pointer-events: none;
 }
 
 .building-showcase > .building-shadow {
@@ -1329,6 +1345,33 @@ p {
 .building-showcase > .decor-lantern,
 .building-showcase > .decor-person {
   z-index: 4;
+}
+
+.intro-screen,
+.hero-card,
+.detail-card,
+.chat-panel,
+.bottom-sheet,
+.action-panel,
+.inventory-bar,
+.guide-strip,
+.build-preview,
+.family-reminder,
+.hall-section,
+.build-stage,
+.build-role-card,
+.build-step-card,
+.support-note,
+.voice-entry,
+.family-assist,
+.shortcut-card,
+.ticket-card,
+.character,
+.scene-thumb,
+.quick-phrase,
+.care-bar {
+  position: relative;
+  z-index: 5;
 }
 
 @keyframes cloudDrift {
