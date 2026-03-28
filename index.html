@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>好戲再生</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="backdrop">
+    <div class="pixel-cloud cloud-a"></div>
+    <div class="pixel-cloud cloud-b"></div>
+    <div class="pixel-cloud cloud-c"></div>
+    <div class="pixel-mountain mountain-a"></div>
+    <div class="pixel-mountain mountain-b"></div>
+  </div>
+
+  <div class="phone-stage">
+    <div class="device-note">好戲再生</div>
+    <div class="iphone-shell">
+      <div class="iphone-bezel">
+        <div class="dynamic-island"></div>
+
+        <main class="app-shell">
+          <header class="mobile-topbar">
+            <div class="status-row">
+              <span>9:41</span>
+              <div class="status-icons">
+                <span>5G</span>
+                <span>100%</span>
+              </div>
+            </div>
+
+            <div class="pixel-banner">
+              <div class="grass-strip"></div>
+              <div class="banner-content">
+                <div>
+                  <p class="eyebrow">湖南花鼓戲</p>
+                  <h1>好戲再生</h1>
+                </div>
+                <div class="pixel-badge">8-BIT</div>
+              </div>
+            </div>
+
+            <div class="care-bar pixel-panel" role="region" aria-label="長輩友善模式">
+              <div class="care-copy">
+                <strong>長輩友善模式</strong>
+                <p>放大文字、提高對比、減少動態，讓長輩更容易看清與操作。</p>
+              </div>
+              <button
+                class="care-toggle"
+                id="elderModeToggle"
+                type="button"
+                aria-pressed="false"
+              >
+                開啟
+              </button>
+            </div>
+          </header>
+
+          <section class="screen screen-active" data-screen="intro">
+            <div class="intro-screen pixel-panel">
+              <div class="building-showcase">
+                <div class="scene-decor decor-left-tree">
+                  <span class="pixel-tree"></span>
+                </div>
+                <div class="scene-decor decor-right-tree">
+                  <span class="pixel-tree small"></span>
+                </div>
+                <div class="scene-decor decor-bird bird-a"></div>
+                <div class="scene-decor decor-bird bird-b"></div>
+                <div class="scene-decor decor-cloud mini-cloud-a"></div>
+                <div class="scene-decor decor-cloud mini-cloud-b"></div>
+                <div class="scene-decor decor-grass grass-a"></div>
+                <div class="scene-decor decor-grass grass-b"></div>
+                <div class="scene-decor decor-flower flower-a"></div>
+                <div class="scene-decor decor-flower flower-b"></div>
+                <div class="scene-decor decor-lantern lantern-left"></div>
+                <div class="scene-decor decor-lantern lantern-right"></div>
+                <div class="scene-decor decor-person person-left">
+                  <span class="person-hair"></span>
+                  <span class="person-head"></span>
+                  <span class="person-body"></span>
+                  <span class="person-arm arm-left"></span>
+                  <span class="person-arm arm-right"></span>
+                  <span class="person-leg leg-left"></span>
+                  <span class="person-leg leg-right"></span>
+                </div>
+                <div class="scene-decor decor-person person-right">
+                  <span class="person-hair"></span>
+                  <span class="person-head"></span>
+                  <span class="person-body"></span>
+                  <span class="person-arm arm-left"></span>
+                  <span class="person-arm arm-right"></span>
+                  <span class="person-leg leg-left"></span>
+                  <span class="person-leg leg-right"></span>
+                </div>
+                <div class="scene-decor building-shadow"></div>
+                <img
+                  class="intro-building"
+                  src="./building-cutout.png"
+                  alt="傳統戲臺建築"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                >
+                <div class="building-placeholder" style="display:none;">
+                  <span>請放入</span>
+                  <strong>building-cutout.png</strong>
+                </div>
+              </div>
+              <div class="intro-mark-wrap">
+                <span class="intro-mini-tree tree-left"></span>
+                <div class="intro-mark">浪石</div>
+                <span class="intro-mini-tree tree-right"></span>
+              </div>
+              <p class="eyebrow">初始界面</p>
+              <h2>歡迎來到好戲再生聊天室</h2>
+              <p class="intro-copy">
+                讓在外工作的人，也能陪家中長輩與孩子唱一段湖南花鼓戲，讓老戲重新熱鬧起來，也讓陪伴重新發生。
+              </p>
+
+              <div class="pixel-stats">
+                <div class="stat-block">
+                  <span>戲房</span>
+                  <strong>3</strong>
+                </div>
+                <div class="stat-block">
+                  <span>熱度</span>
+                  <strong>95%</strong>
+                </div>
+                <div class="stat-block">
+                  <span>主題</span>
+                  <strong>好戲再生</strong>
+                </div>
+              </div>
+
+              <div class="intro-panel dirt-panel">
+                <strong>開場提示</strong>
+                <p>走進戲房、登上戲臺、用鄉音把家人拉近，讓每一次對唱都像一格一格亮起的溫暖燈火。</p>
+              </div>
+
+              <div class="support-note pixel-panel" role="note" aria-label="使用小提醒">
+                <strong>使用小提醒</strong>
+                <p>每一步都盡量簡單清楚。看不清時可開啟長輩友善模式，按鈕也會更大更好點。</p>
+              </div>
+
+              <div class="ore-row">
+                <button class="scene-thumb active" type="button" data-room-thumb="moon">
+                  <span class="scene-thumb-media">
+                    <img
+                      src="./scene-thumb-1.png"
+                      alt="戲房場景一"
+                      onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                    >
+                    <span class="scene-thumb-fallback">壹</span>
+                  </span>
+                  <span class="scene-thumb-label">浪石村內</span>
+                </button>
+                <button class="scene-thumb" type="button" data-room-thumb="spring">
+                  <span class="scene-thumb-media">
+                    <img
+                      src="./scene-thumb-2.png"
+                      alt="戲房場景二"
+                      onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                    >
+                    <span class="scene-thumb-fallback">貳</span>
+                  </span>
+                  <span class="scene-thumb-label">堂前對唱</span>
+                </button>
+                <button class="scene-thumb" type="button" data-room-thumb="harbor">
+                  <span class="scene-thumb-media">
+                    <img
+                      src="./scene-thumb-3.png"
+                      alt="戲房場景三"
+                      onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                    >
+                    <span class="scene-thumb-fallback">參</span>
+                  </span>
+                  <span class="scene-thumb-label">花鼓家書</span>
+                </button>
+              </div>
+
+              <button class="primary-btn wide-btn" type="button" data-go="main">
+                開始體驗
+              </button>
+            </div>
+          </section>
+
+          <section class="screen" data-screen="main">
+            <div class="screen-ornaments screen-ornaments-main" aria-hidden="true">
+              <span class="mini-ornament mini-tree tree-top-left"></span>
+              <span class="mini-ornament mini-lantern lantern-top-right"></span>
+              <span class="mini-ornament mini-firecracker cracker-left"></span>
+              <span class="mini-ornament mini-bush bush-right"></span>
+              <span class="mini-ornament mini-cloud cloud-main-left"></span>
+              <span class="mini-ornament mini-cloud cloud-main-right"></span>
+              <span class="mini-ornament mini-flower flower-main-left"></span>
+              <span class="mini-ornament mini-flower flower-main-right"></span>
+              <span class="mini-ornament mini-firecracker cracker-main-bottom"></span>
+              <span class="mini-ornament mini-lantern lantern-main-mid"></span>
+              <span class="mini-ornament mini-fan fan-main-top"></span>
+              <span class="mini-ornament mini-fan fan-main-bottom"></span>
+              <span class="mini-ornament mini-star star-main-a"></span>
+              <span class="mini-ornament mini-star star-main-b"></span>
+            </div>
+
+            <div class="screen-head">
+              <div>
+                <p class="eyebrow">主界面</p>
+                <h2>戲房大廳</h2>
+              </div>
+              <button class="icon-btn" type="button" data-go="intro">←</button>
+            </div>
+
+            <section class="hero-card hero-mobile pixel-panel">
+              <div class="card-topline"></div>
+              <p class="eyebrow">今日推薦</p>
+              <h2 id="selectedRoomTitle">浪石村內唱新聲</h2>
+              <p id="selectedRoomSummary">
+                以湖南花鼓戲為主題的熱鬧戲臺，適合家人用熟悉的鄉音彼此陪伴、互相打氣。
+              </p>
+              <div class="scene-meta">
+                <span id="selectedRoomAct">開場曲</span>
+                <span id="selectedRoomOnline">7 人在線</span>
+                <span id="selectedRoomTag">花鼓熱場</span>
+              </div>
+            </section>
+
+            <section class="guide-strip pixel-panel" role="note" aria-label="四步使用引導">
+              <div class="guide-step">
+                <strong>1</strong>
+                <span>先選戲房</span>
+              </div>
+              <div class="guide-step">
+                <strong>2</strong>
+                <span>先搭虛擬戲台</span>
+              </div>
+              <div class="guide-step">
+                <strong>3</strong>
+                <span>看誰在台上</span>
+              </div>
+              <div class="guide-step">
+                <strong>4</strong>
+                <span>直接說近況</span>
+              </div>
+            </section>
+
+            <section class="build-preview pixel-panel" role="region" aria-label="虛擬戲台搭建預覽">
+              <div class="section-head">
+                <div>
+                  <p class="eyebrow">Virtual Stage</p>
+                  <h3>先一起搭戲台，再一起開唱</h3>
+                </div>
+                <span class="section-tip">遠程也能共創</span>
+              </div>
+              <p class="build-preview-copy">
+                戲還沒有開場，大家先一起把台面、燈光和氣氛搭起來。留守的人布置舞台，遠方的人點亮燈光、送上開場句，讓搭台本身就成為陪伴。
+              </p>
+              <div class="build-preview-track" aria-hidden="true">
+                <span class="build-node active">台板</span>
+                <span class="build-link"></span>
+                <span class="build-node active">幕布</span>
+                <span class="build-link"></span>
+                <span class="build-node">燈光</span>
+                <span class="build-link"></span>
+                <span class="build-node">人情味</span>
+              </div>
+              <button class="primary-btn wide-btn" type="button" data-go="build">
+                去搭虛擬戲台
+              </button>
+            </section>
+
+            <section class="shortcut-grid" role="group" aria-label="快捷入口">
+              <button class="shortcut-card pixel-panel" type="button" data-go="build">
+                <strong>先搭虛擬戲台</strong>
+                <span>把留守的人和遠方的人分成不同控制端，讓共建過程先把關係熱起來。</span>
+              </button>
+              <button class="shortcut-card pixel-panel" type="button" data-go="secondary">
+                <strong>看誰在台上</strong>
+                <span>直接查看正在表演的人與戲房狀態</span>
+              </button>
+              <button class="shortcut-card pixel-panel" type="button" data-go="tertiary">
+                <strong>進入聊天室</strong>
+                <span>立刻進去說近況、報平安、送上鼓勵</span>
+              </button>
+              <button class="shortcut-card pixel-panel" type="button" id="shortcutCareSend">
+                <strong>代家人發話</strong>
+                <span>先帶入一句完整問候，減少打字壓力</span>
+              </button>
+            </section>
+
+            <section class="family-reminder pixel-panel" role="status" aria-live="polite">
+              <strong>家人來信提醒</strong>
+              <p>你在 <span id="familyReminderRoom">當前戲房</span> 裡有新的陪伴內容，點「進入聊天室」就能接著聊。</p>
+            </section>
+
+            <section class="hall-section">
+              <div class="section-head">
+                <p class="eyebrow">戲房列表</p>
+                <span class="section-tip">切換不同房間</span>
+              </div>
+
+              <div class="room-list">
+                <button class="ticket-card active" type="button" data-room="moon">
+                  <div>
+                    <strong>浪石村內唱新聲</strong>
+                    <small>7 人在線</small>
+                  </div>
+                  <span>花鼓</span>
+                </button>
+
+                <button class="ticket-card" type="button" data-room="spring">
+                  <div>
+                    <strong>堂前對唱報平安</strong>
+                    <small>12 人在線</small>
+                  </div>
+                  <span>團圓</span>
+                </button>
+
+                <button class="ticket-card" type="button" data-room="harbor">
+                  <div>
+                    <strong>花鼓家書小戲房</strong>
+                    <small>9 人在線</small>
+                  </div>
+                  <span>鄉音</span>
+                </button>
+              </div>
+            </section>
+
+            <section class="inventory-bar pixel-panel">
+              <div class="inventory-slot active">
+                <svg class="inventory-svg" viewBox="0 0 48 48" aria-hidden="true">
+                  <rect x="8" y="10" width="4" height="12" fill="#8a3326"/>
+                  <rect x="36" y="10" width="4" height="12" fill="#8a3326"/>
+                  <rect x="14" y="14" width="20" height="6" fill="#f4ecd2"/>
+                  <rect x="10" y="24" width="28" height="4" fill="#6f4522"/>
+                  <rect x="8" y="28" width="32" height="8" fill="#bf8749"/>
+                  <rect x="6" y="36" width="36" height="4" fill="#5a3316"/>
+                  <rect x="18" y="18" width="2" height="6" fill="#f4ecd2"/>
+                  <rect x="28" y="18" width="2" height="6" fill="#f4ecd2"/>
+                </svg>
+              </div>
+              <div class="inventory-slot">
+                <svg class="inventory-svg" viewBox="0 0 48 48" aria-hidden="true">
+                  <rect x="18" y="6" width="12" height="6" fill="#2e231b"/>
+                  <rect x="16" y="12" width="16" height="10" fill="#f3d4b3"/>
+                  <rect x="14" y="22" width="20" height="12" fill="#5b89bf"/>
+                  <rect x="10" y="24" width="4" height="10" fill="#6c97bf"/>
+                  <rect x="34" y="24" width="4" height="10" fill="#6c97bf"/>
+                  <rect x="18" y="34" width="4" height="8" fill="#3d2a1a"/>
+                  <rect x="26" y="34" width="4" height="8" fill="#3d2a1a"/>
+                  <rect x="20" y="15" width="2" height="2" fill="#46352b"/>
+                  <rect x="26" y="15" width="2" height="2" fill="#46352b"/>
+                </svg>
+              </div>
+              <div class="inventory-slot">
+                <svg class="inventory-svg" viewBox="0 0 48 48" aria-hidden="true">
+                  <rect x="6" y="18" width="4" height="18" fill="#845623"/>
+                  <rect x="38" y="18" width="4" height="18" fill="#845623"/>
+                  <rect x="12" y="16" width="24" height="4" fill="#c74f3c"/>
+                  <rect x="10" y="20" width="28" height="10" fill="#ffd45c"/>
+                  <rect x="12" y="30" width="24" height="4" fill="#c74f3c"/>
+                  <rect x="18" y="10" width="4" height="6" fill="#f4ecd2"/>
+                  <rect x="28" y="10" width="4" height="6" fill="#f4ecd2"/>
+                </svg>
+              </div>
+              <div class="inventory-slot">
+                <svg class="inventory-svg" viewBox="0 0 48 48" aria-hidden="true">
+                  <rect x="10" y="12" width="28" height="20" fill="#f4ecd2"/>
+                  <rect x="10" y="12" width="28" height="2" fill="#cfbe91"/>
+                  <rect x="14" y="18" width="20" height="2" fill="#cfbe91"/>
+                  <rect x="14" y="22" width="16" height="2" fill="#cfbe91"/>
+                  <rect x="10" y="32" width="28" height="2" fill="#b8a57c"/>
+                  <rect x="14" y="34" width="20" height="4" fill="#8a3326"/>
+                </svg>
+              </div>
+              <div class="inventory-slot">
+                <svg class="inventory-svg" viewBox="0 0 48 48" aria-hidden="true">
+                  <rect x="20" y="8" width="8" height="8" fill="#ffd45c"/>
+                  <rect x="16" y="16" width="16" height="8" fill="#ffd45c"/>
+                  <rect x="8" y="24" width="8" height="8" fill="#5b89bf"/>
+                  <rect x="32" y="24" width="8" height="8" fill="#5b89bf"/>
+                  <rect x="20" y="24" width="8" height="10" fill="#c74f3c"/>
+                  <rect x="22" y="34" width="4" height="8" fill="#5b89bf"/>
+                  <rect x="12" y="12" width="4" height="4" fill="#ffd45c"/>
+                  <rect x="32" y="12" width="4" height="4" fill="#ffd45c"/>
+                </svg>
+              </div>
+            </section>
+
+            <button class="primary-btn wide-btn" type="button" data-go="build">
+              先去搭好戲台
+            </button>
+          </section>
+
+          <section class="screen" data-screen="build">
+            <div class="screen-ornaments screen-ornaments-build" aria-hidden="true">
+              <span class="mini-ornament mini-tree tree-top-left"></span>
+              <span class="mini-ornament mini-lantern lantern-top-right"></span>
+              <span class="mini-ornament mini-cloud cloud-main-left"></span>
+              <span class="mini-ornament mini-cloud cloud-secondary-right"></span>
+              <span class="mini-ornament mini-fan fan-main-top"></span>
+              <span class="mini-ornament mini-fan fan-secondary-right"></span>
+              <span class="mini-ornament mini-flower flower-main-left"></span>
+              <span class="mini-ornament mini-flower flower-secondary-right"></span>
+              <span class="mini-ornament mini-star star-main-a"></span>
+              <span class="mini-ornament mini-star star-secondary-b"></span>
+            </div>
+
+            <div class="screen-head">
+              <div>
+                <p class="eyebrow">Build Stage</p>
+                <h2>虛擬戲台搭建</h2>
+              </div>
+              <button class="icon-btn" type="button" data-go="main">返回</button>
+            </div>
+
+            <section class="build-stage pixel-panel">
+              <div class="card-topline stone-strip"></div>
+              <p class="eyebrow">Co-build</p>
+              <h2>把這一場戲先搭起來</h2>
+              <p class="build-stage-copy">
+                在正式進入戲房前，大家先各自完成一小步。留守的人負責把戲台落地，遠在外的人負責把情緒和氛圍點亮。
+              </p>
+              <div class="build-stage-map" id="buildStageMap" aria-live="polite">
+                <div class="build-stage-scene scene-yard" data-scene="yard"></div>
+                <div class="build-stage-scene scene-hall" data-scene="hall"></div>
+                <div class="build-stage-scene scene-gate" data-scene="gate"></div>
+                <div class="mini-stage-base" id="buildBase"></div>
+                <div class="mini-stage-eave"></div>
+                <div class="mini-stage-pillar pillar-left"></div>
+                <div class="mini-stage-pillar pillar-right"></div>
+                <div class="mini-stage-step step-front"></div>
+                <div class="mini-stage-step step-side"></div>
+                <div class="mini-stage-curtain left" id="buildCurtainLeft"></div>
+                <div class="mini-stage-curtain right" id="buildCurtainRight"></div>
+                <div class="mini-stage-banner" id="buildBanner"></div>
+                <div class="mini-stage-plaque"></div>
+                <div class="mini-stage-light light-left" id="buildLightLeft"></div>
+                <div class="mini-stage-light light-right" id="buildLightRight"></div>
+                <div class="mini-stage-figure figure-home" id="buildFigureHome"></div>
+                <div class="mini-stage-figure figure-remote" id="buildFigureRemote"></div>
+              </div>
+              <div class="build-stage-message" id="buildStageMessage">先選一個開唱場景，戲台就會開始成形。</div>
+              <div class="build-progress">
+                <span>搭建進度</span>
+                <strong id="buildProgressText">0 / 4 已完成</strong>
+              </div>
+            </section>
+
+            <section class="build-role-grid" role="group" aria-label="搭建分工">
+              <article class="build-role-card pixel-panel">
+                <p class="eyebrow">留守的人</p>
+                <h3>控制台面和人物</h3>
+                <p>負責選台板、掛幕布、擺角色站位，讓家中的真實空間和戲台發生連接。</p>
+                <div class="build-tools" role="group" aria-label="留守的人可控制內容">
+                  <button class="tool-chip build-control active" type="button" data-build-step="scene" data-build-value="yard">院壩場</button>
+                  <button class="tool-chip build-control" type="button" data-build-step="scene" data-build-value="hall">堂前場</button>
+                  <button class="tool-chip build-control" type="button" data-build-step="scene" data-build-value="gate">門口場</button>
+                  <button class="tool-chip build-control" type="button" data-build-step="curtain" data-build-value="open">掛紅幕</button>
+                  <button class="tool-chip build-control" type="button" data-build-step="figure" data-build-value="set">擺角色</button>
+                </div>
+              </article>
+
+              <article class="build-role-card pixel-panel remote-role">
+                <p class="eyebrow">遠方的人</p>
+                <h3>控制燈光和氛圍</h3>
+                <p>負責點亮燈色、加入音效、寫下一句開場詞，讓感情先從遠方抵達。</p>
+                <div class="build-tools" role="group" aria-label="遠方的人可控制內容">
+                  <button class="tool-chip build-control" type="button" data-build-step="light" data-build-value="warm">暖燈</button>
+                  <button class="tool-chip build-control" type="button" data-build-step="light" data-build-value="gold">金燈</button>
+                  <button class="tool-chip build-control" type="button" data-build-step="light" data-build-value="blue">夜燈</button>
+                  <button class="tool-chip build-control" type="button" data-build-step="message" data-build-value="平安先到，戲就開場。">寫開場句</button>
+                </div>
+              </article>
+            </section>
+
+            <section class="build-step-list" id="buildStepList">
+              <article class="build-step-card pixel-panel" data-build-card="scene">
+                <strong>01 定場景</strong>
+                <p>先決定是在家門口、堂前還是院壩開唱，讓每個人先進入同一個情境。</p>
+              </article>
+              <article class="build-step-card pixel-panel" data-build-card="curtain">
+                <strong>02 掛元素</strong>
+                <p>把幕布、燈籠、小桌、火盆等元素一步步裝上去，讓戲台像被一起慢慢喚醒。</p>
+              </article>
+              <article class="build-step-card pixel-panel" data-build-card="light">
+                <strong>03 點燈光</strong>
+                <p>由遠方的人把燈色點亮，讓舞台從空場變成有溫度的等待。</p>
+              </article>
+              <article class="build-step-card pixel-panel" data-build-card="message">
+                <strong>04 留一句話</strong>
+                <p>每個人在搭台時留下一句開場白或祝福，讓這次連接從「共同搭建」開始。</p>
+              </article>
+            </section>
+
+            <section class="support-note pixel-panel" role="note" aria-label="為什麼先搭戲台">
+              <strong>為什麼要先搭戲台？</strong>
+              <p>因為「一起搭」比「直接進去」更容易形成共同經驗。搭的過程本身就是陪伴、配合，也是聯繫感情的開場。</p>
+            </section>
+
+            <button class="primary-btn wide-btn" type="button" data-go="secondary">
+              搭好後進入戲房
+            </button>
+          </section>
+
+          <section class="screen" data-screen="secondary">
+            <div class="screen-ornaments screen-ornaments-secondary" aria-hidden="true">
+              <span class="mini-ornament mini-lantern lantern-top-left"></span>
+              <span class="mini-ornament mini-tree tree-right-mid"></span>
+              <span class="mini-ornament mini-firecracker cracker-right"></span>
+              <span class="mini-ornament mini-bush bush-left"></span>
+              <span class="mini-ornament mini-cloud cloud-secondary-right"></span>
+              <span class="mini-ornament mini-cloud cloud-secondary-left"></span>
+              <span class="mini-ornament mini-flower flower-secondary-left"></span>
+              <span class="mini-ornament mini-flower flower-secondary-right"></span>
+              <span class="mini-ornament mini-lantern lantern-secondary-low"></span>
+              <span class="mini-ornament mini-firecracker cracker-secondary-top"></span>
+              <span class="mini-ornament mini-fan fan-secondary-left"></span>
+              <span class="mini-ornament mini-fan fan-secondary-right"></span>
+              <span class="mini-ornament mini-star star-secondary-a"></span>
+              <span class="mini-ornament mini-star star-secondary-b"></span>
+            </div>
+
+            <div class="screen-head">
+              <div>
+                <p class="eyebrow">二級界面</p>
+                <h2>戲房詳情</h2>
+              </div>
+              <button class="icon-btn" type="button" data-go="main">←</button>
+            </div>
+
+            <section class="detail-card pixel-panel">
+              <div class="card-topline grass-strip"></div>
+              <p class="eyebrow">當前戲房</p>
+              <h2 id="detailRoomTitle">浪石村內唱新聲</h2>
+              <p id="detailRoomDescription">
+                今晚的戲房主題是「鄉音與團圓」，特別適合讓在外的人陪家中長輩和孩子唱一段湖南花鼓戲。
+              </p>
+
+              <div class="detail-grid">
+                <div class="detail-chip">
+                  <span>在線人數</span>
+                  <strong id="detailOnline">7 人</strong>
+                </div>
+                <div class="detail-chip">
+                  <span>戲房標籤</span>
+                  <strong id="detailTag">花鼓</strong>
+                </div>
+              </div>
+            </section>
+
+            <section class="mobile-cast">
+              <div class="section-head">
+                <p class="eyebrow">正在表演</p>
+                <span class="section-tip" id="detailPerformer">春秀正在台上</span>
+              </div>
+
+              <div class="cast-strip">
+                <div class="character display-only active">
+                  <span class="avatar">V</span>
+                  <span class="character-info">
+                    <strong data-detail-cast-name="0">春秀</strong>
+                    <small data-detail-cast-role="0">俏皮清亮</small>
+                  </span>
+                </div>
+                <div class="character display-only">
+                  <span class="avatar alt">O</span>
+                  <span class="character-info">
+                    <strong data-detail-cast-name="1">長生</strong>
+                    <small data-detail-cast-role="1">樸實真誠</small>
+                  </span>
+                </div>
+                <div class="character display-only">
+                  <span class="avatar alt-two">S</span>
+                  <span class="character-info">
+                    <strong data-detail-cast-name="2">桂枝嬸</strong>
+                    <small data-detail-cast-role="2">熱心爽朗</small>
+                  </span>
+                </div>
+              </div>
+            </section>
+
+            <section class="action-panel pixel-panel">
+              <button class="tool-chip active" type="button">上台唱花鼓</button>
+              <button class="tool-chip" type="button">邀家人入場</button>
+              <button class="tool-chip" type="button">送出祝福</button>
+            </section>
+
+            <button class="primary-btn wide-btn" type="button" data-go="tertiary">
+              進入戲臺聊天
+            </button>
+          </section>
+
+          <section class="screen" data-screen="tertiary">
+            <div class="screen-ornaments screen-ornaments-tertiary" aria-hidden="true">
+              <span class="mini-ornament mini-lantern lantern-chat-left"></span>
+              <span class="mini-ornament mini-lantern lantern-chat-right"></span>
+              <span class="mini-ornament mini-firecracker cracker-chat"></span>
+              <span class="mini-ornament mini-tree tree-chat"></span>
+              <span class="mini-ornament mini-cloud cloud-chat-top"></span>
+              <span class="mini-ornament mini-cloud cloud-chat-bottom"></span>
+              <span class="mini-ornament mini-flower flower-chat-left"></span>
+              <span class="mini-ornament mini-flower flower-chat-right"></span>
+              <span class="mini-ornament mini-firecracker cracker-chat-left"></span>
+              <span class="mini-ornament mini-bush bush-chat-right"></span>
+              <span class="mini-ornament mini-fan fan-chat-top"></span>
+              <span class="mini-ornament mini-fan fan-chat-bottom"></span>
+              <span class="mini-ornament mini-star star-chat-a"></span>
+              <span class="mini-ornament mini-star star-chat-b"></span>
+            </div>
+
+            <div class="screen-head">
+              <div>
+                <p class="eyebrow">三級界面</p>
+                <h2>花鼓戲聊天室</h2>
+              </div>
+              <button class="icon-btn" type="button" data-go="secondary">←</button>
+            </div>
+
+            <section class="insight-band">
+              <div class="insight-pill pixel-panel">
+                <span class="eyebrow">熱鬧值</span>
+                <strong>95%</strong>
+              </div>
+              <div class="insight-pill pixel-panel">
+                <span class="eyebrow">高光台詞</span>
+                <strong id="quoteDisplay">鑼鼓一響，鄉音就近了。</strong>
+              </div>
+            </section>
+
+            <section class="mobile-cast">
+              <div class="section-head">
+                <p class="eyebrow">角色陣容</p>
+                <span class="section-tip">當前發言者高亮</span>
+              </div>
+
+              <div class="cast-strip">
+                <button class="character active" type="button" data-character="violet">
+                  <span class="avatar">V</span>
+                  <span class="character-info">
+                    <strong data-chat-cast-name="violet">春秀</strong>
+                    <small data-chat-cast-role="violet">花鼓旦角</small>
+                  </span>
+                </button>
+
+                <button class="character" type="button" data-character="orian">
+                  <span class="avatar alt">O</span>
+                  <span class="character-info">
+                    <strong data-chat-cast-name="orian">長生</strong>
+                    <small data-chat-cast-role="orian">花鼓生角</small>
+                  </span>
+                </button>
+
+                <button class="character" type="button" data-character="selene">
+                  <span class="avatar alt-two">S</span>
+                  <span class="character-info">
+                    <strong data-chat-cast-name="selene">桂枝嬸</strong>
+                    <small data-chat-cast-role="selene">熱場幫腔</small>
+                  </span>
+                </button>
+              </div>
+            </section>
+
+            <section class="chat-panel pixel-panel">
+              <div class="card-topline stone-strip"></div>
+              <div class="chat-head">
+                <div>
+                  <p class="eyebrow">本幕動態</p>
+                  <h3 id="chatRoomTitle">花鼓戲正熱鬧</h3>
+                </div>
+                <div class="filters">
+                  <button class="filter active" type="button">全部</button>
+                  <button class="filter" type="button">對唱</button>
+                  <button class="filter" type="button">場記</button>
+                </div>
+              </div>
+
+              <div class="messages" id="messages">
+                <article class="message system">
+                  <span class="message-label">旁白</span>
+                  <p>鑼鼓聲一起，浪石村內的小戲臺熱鬧起來，鄉親們圍坐著等人開嗓。</p>
+                </article>
+
+                <article class="message incoming featured">
+                  <div class="message-meta">
+                    <span class="avatar mini alt">O</span>
+                    <div>
+                      <strong>長生</strong>
+                      <small>花鼓生角 - 樸實真誠</small>
+                    </div>
+                    <span class="emotion">接唱</span>
+                  </div>
+                  <p>「春秀妹子，你這一開嗓，就像把家鄉的熱鬧都唱回來了。」</p>
+                </article>
+
+                <article class="message outgoing">
+                  <div class="message-meta">
+                    <span class="avatar mini">V</span>
+                    <div>
+                      <strong>春秀</strong>
+                      <small>你 - 清亮俏皮</small>
+                    </div>
+                    <span class="emotion warm">亮嗓</span>
+                  </div>
+                  <p>「我在外頭做工再忙，也想唱段花鼓戲給屋裡老人孩子聽，報個平安。」</p>
+                </article>
+
+                <article class="message incoming">
+                  <div class="message-meta">
+                    <span class="avatar mini alt-two">S</span>
+                    <div>
+                      <strong>桂枝嬸</strong>
+                      <small>幫腔嬸子 - 熱心又爽朗</small>
+                    </div>
+                    <span class="emotion cool">喝采</span>
+                  </div>
+                  <p>「唱得好呀，這一聲一調聽得人心裡暖，快再來一段《劉海砍樵》！」</p>
+                </article>
+              </div>
+            </section>
+
+            <section class="bottom-sheet pixel-panel">
+              <div class="chat-help pixel-panel" role="note" aria-label="發話提示">
+                <strong>發話提示</strong>
+                <p>可直接說近況、報平安，或按「送上舞臺」把想說的話清楚送出。</p>
+              </div>
+
+              <div class="composer-tools">
+                <button class="tool-chip active" type="button">台詞</button>
+                <button class="tool-chip" type="button">對唱</button>
+                <button class="tool-chip" type="button">舞台指令</button>
+              </div>
+
+              <form class="composer" id="composer">
+                <label class="composer-box">
+                  <textarea id="messageInput" rows="2" placeholder="寫下你的下一句花鼓戲台詞……"></textarea>
+                  <button class="send-btn" type="submit">送上舞臺</button>
+                </label>
+              </form>
+
+              <div class="voice-entry pixel-panel" role="group" aria-label="語音式快捷入口">
+                <button class="voice-btn" type="button" id="voiceAssistBtn">
+                  按一下代你說
+                </button>
+                <p class="voice-copy">不想打字時，可先用一句完整話帶入，再直接送出。</p>
+              </div>
+
+              <div class="quick-phrase-panel" role="group" aria-label="常用話語">
+                <button class="quick-phrase" type="button" data-quick-message="我在外面一切都好，請放心。">
+                  報平安
+                </button>
+                <button class="quick-phrase" type="button" data-quick-message="今天辛苦了，想聽你唱一段。">
+                  問候家人
+                </button>
+                <button class="quick-phrase" type="button" data-quick-message="我很想你們，過幾天再和你們聊。">
+                  表達想念
+                </button>
+              </div>
+
+              <div class="family-assist pixel-panel" role="note" aria-label="家人協助提示">
+                <strong>家人協助</strong>
+                <p>子女或志工可先幫長輩選好戲房、打好常用句，讓長輩只要點一下就能互動。</p>
+              </div>
+            </section>
+          </section>
+        </main>
+      </div>
+    </div>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
