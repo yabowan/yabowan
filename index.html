@@ -461,7 +461,13 @@
                 <div class="mini-stage-figure figure-remote" id="buildFigureRemote"></div>
               </div>
               <figure class="build-process-single step-scene" id="buildProcessStage" aria-label="戲台搭建當前步驟圖像">
-                <img src="/build-step-1.png?v=20260406" alt="戲台搭建當前步驟圖像" class="build-process-image" id="buildProcessImage">
+                <img src="./build-step-1.png?v=20260406" alt="戲台搭建當前步驟圖像" class="build-process-image" id="buildProcessImage">
+                <div class="build-process-assets" aria-hidden="true">
+                  <img src="./build-step-1.png?v=20260406" alt="" id="buildStepAssetScene">
+                  <img src="./build-step-2.png?v=20260406" alt="" id="buildStepAssetCurtain">
+                  <img src="./build-step-3.png?v=20260406" alt="" id="buildStepAssetLight">
+                  <img src="./build-step-4.png?v=20260406" alt="" id="buildStepAssetMessage">
+                </div>
                 <div class="build-process-env" aria-hidden="true">
                   <span class="env-sun"></span>
                   <span class="env-cloud env-cloud-a"></span>
@@ -1145,30 +1151,38 @@
     };
     const buildProcessAssetMap = {
       scene: {
-        src: "/build-step-1.png?v=20260406",
+        src: "",
         caption: "1 定場景",
         className: "is-scene",
         stageClass: "step-scene"
       },
       curtain: {
-        src: "/build-step-2.png?v=20260406",
+        src: "",
         caption: "2 搭台面",
         className: "is-curtain",
         stageClass: "step-curtain"
       },
       light: {
-        src: "/build-step-3.png?v=20260406",
+        src: "",
         caption: "3 點燈光",
         className: "is-light",
         stageClass: "step-light"
       },
       message: {
-        src: "/build-step-4.png?v=20260406",
+        src: "",
         caption: "4 留開場句",
         className: "is-message",
         stageClass: "step-message"
       }
     };
+    const buildStepAssetScene = document.getElementById("buildStepAssetScene");
+    const buildStepAssetCurtain = document.getElementById("buildStepAssetCurtain");
+    const buildStepAssetLight = document.getElementById("buildStepAssetLight");
+    const buildStepAssetMessage = document.getElementById("buildStepAssetMessage");
+    if (buildStepAssetScene) buildProcessAssetMap.scene.src = buildStepAssetScene.src;
+    if (buildStepAssetCurtain) buildProcessAssetMap.curtain.src = buildStepAssetCurtain.src;
+    if (buildStepAssetLight) buildProcessAssetMap.light.src = buildStepAssetLight.src;
+    if (buildStepAssetMessage) buildProcessAssetMap.message.src = buildStepAssetMessage.src;
 
     let activeCharacter = "violet";
     let activeRoom = "moon";
