@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>好戲再生</title>
-  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./styles.css?v=20260406">
 </head>
 <body>
   <div class="backdrop">
@@ -418,9 +418,29 @@
               <div class="card-topline stone-strip"></div>
               <p class="eyebrow">Co-build</p>
               <h2>把這一場戲先搭起來</h2>
-              <p class="build-stage-copy">
-                在正式進入戲房前，大家先各自完成一小步。留守的人負責把戲台落地，遠在外的人負責把情緒和氛圍點亮。
-              </p>
+              <div class="build-visual-cues" aria-hidden="true">
+                <span class="build-cue cue-home">留守搭台</span>
+                <span class="build-cue cue-remote">遠方點燈</span>
+                <span class="build-cue cue-join">一起開場</span>
+              </div>
+              <div class="build-stepper" id="buildStepper" role="tablist" aria-label="搭台流程">
+                <button class="build-step-dot active" type="button" data-build-nav="0">
+                  <strong>01</strong>
+                  <span>定場景</span>
+                </button>
+                <button class="build-step-dot" type="button" data-build-nav="1">
+                  <strong>02</strong>
+                  <span>搭台面</span>
+                </button>
+                <button class="build-step-dot" type="button" data-build-nav="2">
+                  <strong>03</strong>
+                  <span>點燈光</span>
+                </button>
+                <button class="build-step-dot" type="button" data-build-nav="3">
+                  <strong>04</strong>
+                  <span>留開場句</span>
+                </button>
+              </div>
               <div class="build-stage-map" id="buildStageMap" aria-live="polite">
                 <div class="build-stage-scene scene-yard" data-scene="yard"></div>
                 <div class="build-stage-scene scene-hall" data-scene="hall"></div>
@@ -440,6 +460,38 @@
                 <div class="mini-stage-figure figure-home" id="buildFigureHome"></div>
                 <div class="mini-stage-figure figure-remote" id="buildFigureRemote"></div>
               </div>
+              <figure class="build-process-single step-scene" id="buildProcessStage" aria-label="戲台搭建當前步驟圖像">
+                <img src="./build-step-1.png" alt="戲台搭建當前步驟圖像" class="build-process-image" id="buildProcessImage">
+                <div class="build-process-env" aria-hidden="true">
+                  <span class="env-sun"></span>
+                  <span class="env-cloud env-cloud-a"></span>
+                  <span class="env-cloud env-cloud-b"></span>
+                  <span class="env-mountain env-mountain-back-left"></span>
+                  <span class="env-mountain env-mountain-back-right"></span>
+                  <span class="env-mountain env-mountain-left"></span>
+                  <span class="env-mountain env-mountain-right"></span>
+                  <span class="env-bird env-bird-a"></span>
+                  <span class="env-bird env-bird-b"></span>
+                  <span class="env-bird env-bird-c"></span>
+                  <span class="env-bird env-bird-d"></span>
+                  <span class="env-tree env-tree-left"></span>
+                  <span class="env-tree env-tree-mid-left"></span>
+                  <span class="env-tree env-tree-mid-right"></span>
+                  <span class="env-tree env-tree-right"></span>
+                  <span class="env-grass env-grass-a"></span>
+                  <span class="env-grass env-grass-b"></span>
+                  <span class="env-flower env-flower-a"></span>
+                  <span class="env-flower env-flower-b"></span>
+                  <span class="env-flower env-flower-c"></span>
+                </div>
+                <div class="build-process-actors" aria-hidden="true">
+                  <img src="./role-1.png" alt="" class="build-actor actor-role-1">
+                  <img src="./role-3.png" alt="" class="build-actor actor-role-3">
+                  <img src="./role-4.png" alt="" class="build-actor actor-role-4">
+                  <img src="./role-2.png" alt="" class="build-actor actor-role-2">
+                </div>
+                <figcaption id="buildProcessCaption">1 定場景</figcaption>
+              </figure>
               <div class="build-stage-message" id="buildStageMessage">先選一個開唱場景，戲台就會開始成形。</div>
               <div class="build-progress">
                 <span>搭建進度</span>
@@ -447,58 +499,84 @@
               </div>
             </section>
 
-            <section class="build-role-grid" role="group" aria-label="搭建分工">
-              <article class="build-role-card pixel-panel">
-                <p class="eyebrow">留守的人</p>
-                <h3>控制台面和人物</h3>
-                <p>負責選台板、掛幕布、擺角色站位，讓家中的真實空間和戲台發生連接。</p>
-                <div class="build-tools" role="group" aria-label="留守的人可控制內容">
+            <section class="build-flow-grid">
+              <article class="build-current-card pixel-panel">
+                <p class="eyebrow" id="buildCurrentRole">留守的人</p>
+                <h3 id="buildCurrentTitle">先決定這場戲要在哪裡開場</h3>
+                <p class="build-current-copy" id="buildCurrentDescription">先選一個場景，戲台就會開始成形。</p>
+
+                <div class="build-selection-strip" aria-label="目前搭建結果">
+                  <span class="build-selection-chip" id="buildSceneStatus">場景未定</span>
+                  <span class="build-selection-chip" id="buildLightStatus">燈光未亮</span>
+                  <span class="build-selection-chip" id="buildMessageStatus">開場句未留</span>
+                </div>
+
+                <div class="build-option-panel is-active" data-build-panel="scene" role="group" aria-label="定場景">
                   <button class="tool-chip build-control active" type="button" data-build-step="scene" data-build-value="yard">院壩場</button>
                   <button class="tool-chip build-control" type="button" data-build-step="scene" data-build-value="hall">堂前場</button>
                   <button class="tool-chip build-control" type="button" data-build-step="scene" data-build-value="gate">門口場</button>
+                </div>
+
+                <div class="build-option-panel" data-build-panel="curtain" role="group" aria-label="搭台面">
                   <button class="tool-chip build-control" type="button" data-build-step="curtain" data-build-value="open">掛紅幕</button>
                   <button class="tool-chip build-control" type="button" data-build-step="figure" data-build-value="set">擺角色</button>
                 </div>
-              </article>
 
-              <article class="build-role-card pixel-panel remote-role">
-                <p class="eyebrow">遠方的人</p>
-                <h3>控制燈光和氛圍</h3>
-                <p>負責點亮燈色、加入音效、寫下一句開場詞，讓感情先從遠方抵達。</p>
-                <div class="build-tools" role="group" aria-label="遠方的人可控制內容">
+                <div class="build-option-panel" data-build-panel="light" role="group" aria-label="點燈光">
                   <button class="tool-chip build-control" type="button" data-build-step="light" data-build-value="warm">暖燈</button>
                   <button class="tool-chip build-control" type="button" data-build-step="light" data-build-value="gold">金燈</button>
                   <button class="tool-chip build-control" type="button" data-build-step="light" data-build-value="blue">夜燈</button>
-                  <button class="tool-chip build-control" type="button" data-build-step="message" data-build-value="平安先到，戲就開場。">寫開場句</button>
+                </div>
+
+                <div class="build-option-panel" data-build-panel="message" role="group" aria-label="留開場句">
+                  <button class="tool-chip build-control" type="button" data-build-step="message" data-build-value="平安先到，戲就開場。">平安先到</button>
+                  <button class="tool-chip build-control" type="button" data-build-step="message" data-build-value="燈一亮，你我就像站在同一個台前。">燈一亮，我們就靠近了</button>
+                  <button class="tool-chip build-control" type="button" data-build-step="message" data-build-value="這一場戲，先替遠方的人把想念唱出來。">先把想念唱出來</button>
+                </div>
+
+                <p class="build-current-tip" id="buildCurrentTip">先完成這一步，戲台才會繼續往下長出來。</p>
+
+                <div class="build-nav-actions">
+                  <button class="ghost-btn" id="buildPrevBtn" type="button">上一步</button>
+                  <button class="primary-btn" id="buildNextBtn" type="button">下一步</button>
                 </div>
               </article>
-            </section>
 
-            <section class="build-step-list" id="buildStepList">
-              <article class="build-step-card pixel-panel" data-build-card="scene">
-                <strong>01 定場景</strong>
-                <p>先決定是在家門口、堂前還是院壩開唱，讓每個人先進入同一個情境。</p>
-              </article>
-              <article class="build-step-card pixel-panel" data-build-card="curtain">
-                <strong>02 掛元素</strong>
-                <p>把幕布、燈籠、小桌、火盆等元素一步步裝上去，讓戲台像被一起慢慢喚醒。</p>
-              </article>
-              <article class="build-step-card pixel-panel" data-build-card="light">
-                <strong>03 點燈光</strong>
-                <p>由遠方的人把燈色點亮，讓舞台從空場變成有溫度的等待。</p>
-              </article>
-              <article class="build-step-card pixel-panel" data-build-card="message">
-                <strong>04 留一句話</strong>
-                <p>每個人在搭台時留下一句開場白或祝福，讓這次連接從「共同搭建」開始。</p>
-              </article>
+              <section class="build-side-status">
+                <article class="build-role-card pixel-panel" data-build-card="scene">
+                  <p class="eyebrow">留守的人</p>
+                  <h3>把戲台落地</h3>
+                  <div class="build-card-tags">
+                    <span>選場景</span>
+                    <span>掛紅幕</span>
+                    <span>擺角色</span>
+                  </div>
+                </article>
+                <article class="build-role-card pixel-panel remote-role" data-build-card="light">
+                  <p class="eyebrow">遠方的人</p>
+                  <h3>把情緒點亮</h3>
+                  <div class="build-card-tags">
+                    <span>選燈色</span>
+                    <span>留一句話</span>
+                    <span>把人拉近</span>
+                  </div>
+                </article>
+                <article class="build-step-card pixel-panel" data-build-card="message">
+                  <strong>搭台本身就是互動</strong>
+                  <div class="build-card-tags compact">
+                    <span>先一起搭</span>
+                    <span>再一起玩</span>
+                  </div>
+                </article>
+              </section>
             </section>
 
             <section class="support-note pixel-panel" role="note" aria-label="為什麼先搭戲台">
               <strong>為什麼要先搭戲台？</strong>
-              <p>因為「一起搭」比「直接進去」更容易形成共同經驗。搭的過程本身就是陪伴、配合，也是聯繫感情的開場。</p>
+              <p>先一起搭，再一起進戲房，感覺會更像真正開場。</p>
             </section>
 
-            <button class="primary-btn wide-btn" type="button" data-go="secondary">
+            <button class="primary-btn wide-btn" id="buildFinishBtn" type="button" data-go="secondary">
               搭好後進入戲房
             </button>
           </section>
@@ -1012,6 +1090,21 @@
     const detailCastRoleNodes = document.querySelectorAll("[data-detail-cast-role]");
     const buildControls = document.querySelectorAll(".build-control");
     const buildCards = document.querySelectorAll("[data-build-card]");
+    const buildProcessImage = document.getElementById("buildProcessImage");
+    const buildProcessCaption = document.getElementById("buildProcessCaption");
+    const buildProcessStage = document.getElementById("buildProcessStage");
+    const buildNavButtons = document.querySelectorAll("[data-build-nav]");
+    const buildPanels = document.querySelectorAll("[data-build-panel]");
+    const buildPrevBtn = document.getElementById("buildPrevBtn");
+    const buildNextBtn = document.getElementById("buildNextBtn");
+    const buildFinishBtn = document.getElementById("buildFinishBtn");
+    const buildCurrentRole = document.getElementById("buildCurrentRole");
+    const buildCurrentTitle = document.getElementById("buildCurrentTitle");
+    const buildCurrentDescription = document.getElementById("buildCurrentDescription");
+    const buildCurrentTip = document.getElementById("buildCurrentTip");
+    const buildSceneStatus = document.getElementById("buildSceneStatus");
+    const buildLightStatus = document.getElementById("buildLightStatus");
+    const buildMessageStatus = document.getElementById("buildMessageStatus");
     const buildProgressText = document.getElementById("buildProgressText");
     const buildStageMessage = document.getElementById("buildStageMessage");
     const buildSceneNodes = document.querySelectorAll("[data-scene]");
@@ -1023,9 +1116,64 @@
     const buildLightRight = document.getElementById("buildLightRight");
     const buildFigureHome = document.getElementById("buildFigureHome");
     const buildFigureRemote = document.getElementById("buildFigureRemote");
+    const buildStepOrder = ["scene", "curtain", "light", "message"];
+    const buildStepMeta = {
+      scene: {
+        role: "留守的人",
+        title: "先把这场戏定在一个具体空间里",
+        description: "先选场景。",
+        tip: "先定地方，戏台才会长出来。"
+      },
+      curtain: {
+        role: "留守的人",
+        title: "把台面、幕布和角色位置先安顿好",
+        description: "挂幕，摆角儿。",
+        tip: "把台面搭起來，人物先站定。"
+      },
+      light: {
+        role: "远方的人",
+        title: "由远方的人点亮这一场戏的气氛",
+        description: "选一种灯色。",
+        tip: "灯一亮，这场戏才有情绪。"
+      },
+      message: {
+        role: "远方的人",
+        title: "最后留一句开场话，把关系唱出来",
+        description: "留一句就够。",
+        tip: "一句开场话，整个戏台就醒了。"
+      }
+    };
+    const buildProcessAssetMap = {
+      scene: {
+        src: "./build-step-1.png",
+        caption: "1 定場景",
+        className: "is-scene",
+        stageClass: "step-scene"
+      },
+      curtain: {
+        src: "./build-step-2.png",
+        caption: "2 搭台面",
+        className: "is-curtain",
+        stageClass: "step-curtain"
+      },
+      light: {
+        src: "./build-step-3.png",
+        caption: "3 點燈光",
+        className: "is-light",
+        stageClass: "step-light"
+      },
+      message: {
+        src: "./build-step-4.png",
+        caption: "4 留開場句",
+        className: "is-message",
+        stageClass: "step-message"
+      }
+    };
 
     let activeCharacter = "violet";
     let activeRoom = "moon";
+    let currentBuildStepIndex = 0;
+    let lastRenderedBuildStep = "scene";
     let roomState = JSON.parse(JSON.stringify(roomData));
     let buildState = {
       scene: "",
@@ -1155,10 +1303,108 @@
     }
 
     function getBuildProgress() {
-      return ["scene", "curtain", "light", "message"].filter((step) => {
+      return buildStepOrder.filter((step) => {
         if (step === "curtain") return buildState.curtain;
         return Boolean(buildState[step]);
       }).length;
+    }
+
+    function isBuildStepDone(step) {
+      if (step === "curtain") return buildState.curtain;
+      return Boolean(buildState[step]);
+    }
+
+    function getFirstIncompleteBuildStep() {
+      return buildStepOrder.find((step) => !isBuildStepDone(step)) || buildStepOrder[buildStepOrder.length - 1];
+    }
+
+    function syncBuildStepIndex() {
+      const maxAvailable = Math.min(buildStepOrder.length - 1, getBuildProgress());
+      if (currentBuildStepIndex > maxAvailable) currentBuildStepIndex = maxAvailable;
+      if (currentBuildStepIndex < 0) currentBuildStepIndex = 0;
+    }
+
+    function renderBuildFlow() {
+      syncBuildStepIndex();
+
+      const progress = getBuildProgress();
+      const currentStep = buildStepOrder[currentBuildStepIndex];
+      const currentMeta = buildStepMeta[currentStep];
+      const allDone = progress === buildStepOrder.length;
+      const maxAvailable = Math.min(buildStepOrder.length - 1, progress);
+      const stepChanged = currentStep !== lastRenderedBuildStep;
+
+      if (buildCurrentRole) buildCurrentRole.textContent = currentMeta.role;
+      if (buildCurrentTitle) buildCurrentTitle.textContent = currentMeta.title;
+      if (buildCurrentDescription) buildCurrentDescription.textContent = currentMeta.description;
+      if (buildCurrentTip) buildCurrentTip.textContent = currentMeta.tip;
+      if (buildSceneStatus) buildSceneStatus.textContent = buildState.scene ? `場景 ${buildState.scene === "yard" ? "院壩" : buildState.scene === "hall" ? "堂前" : "門口"}` : "場景未定";
+      if (buildLightStatus) buildLightStatus.textContent = buildState.light ? `燈光 ${buildState.light === "warm" ? "暖燈" : buildState.light === "gold" ? "金燈" : "夜燈"}` : "燈光未亮";
+      if (buildMessageStatus) buildMessageStatus.textContent = buildState.message ? "開場句已留" : "開場句未留";
+
+      buildPanels.forEach((panel) => {
+        panel.classList.toggle("is-active", panel.dataset.buildPanel === currentStep);
+      });
+
+      buildNavButtons.forEach((button) => {
+        const index = Number(button.dataset.buildNav);
+        const step = buildStepOrder[index];
+        const isDone = isBuildStepDone(step);
+        const isCurrent = index === currentBuildStepIndex;
+        const isUnlocked = index <= maxAvailable;
+
+        button.classList.toggle("active", isCurrent);
+        button.classList.toggle("is-current", isCurrent);
+        button.classList.toggle("is-done", isDone);
+        button.disabled = !isUnlocked;
+      });
+
+      buildCards.forEach((card) => {
+        const step = card.dataset.buildCard;
+        card.classList.toggle("is-done", isBuildStepDone(step));
+        card.classList.toggle("is-current", step === currentStep);
+      });
+
+      const currentProcessAsset = buildProcessAssetMap[currentStep];
+      if (buildProcessImage && currentProcessAsset) {
+        buildProcessImage.src = currentProcessAsset.src;
+        buildProcessImage.alt = `${currentProcessAsset.caption} 圖像`;
+        buildProcessImage.className = `build-process-image ${currentProcessAsset.className || ""}`.trim();
+      }
+      if (buildProcessStage && currentProcessAsset) {
+        buildProcessStage.className = `build-process-single ${currentProcessAsset.stageClass || ""}`.trim();
+        if (stepChanged) {
+          buildProcessStage.classList.remove("is-animating");
+          void buildProcessStage.offsetWidth;
+          buildProcessStage.classList.add("is-animating");
+        }
+      }
+      if (buildProcessCaption && currentProcessAsset) {
+        buildProcessCaption.textContent = currentProcessAsset.caption;
+      }
+      lastRenderedBuildStep = currentStep;
+
+      if (buildPrevBtn) {
+        buildPrevBtn.disabled = currentBuildStepIndex === 0;
+      }
+
+      if (buildNextBtn) {
+        if (allDone) {
+          buildNextBtn.textContent = "已完成";
+          buildNextBtn.disabled = true;
+        } else if (isBuildStepDone(currentStep)) {
+          buildNextBtn.textContent = currentBuildStepIndex === buildStepOrder.length - 1 ? "等待收尾" : "下一步";
+          buildNextBtn.disabled = currentBuildStepIndex === buildStepOrder.length - 1;
+        } else {
+          buildNextBtn.textContent = "先完成这步";
+          buildNextBtn.disabled = true;
+        }
+      }
+
+      if (buildFinishBtn) {
+        buildFinishBtn.classList.toggle("is-ready", allDone);
+        buildFinishBtn.disabled = !allDone;
+      }
     }
 
     function renderBuildStage() {
@@ -1195,7 +1441,7 @@
       });
 
       if (buildStageMessage) {
-        buildStageMessage.textContent = buildState.message || "先選一個開唱場景，戲台就會開始成形。";
+        buildStageMessage.textContent = buildState.message || "先选一个唱戏场景，戏台就会从空地一步步成形。";
         buildStageMessage.classList.toggle("is-visible", Boolean(buildState.message));
       }
 
@@ -1214,17 +1460,7 @@
         button.classList.toggle("active", isActive);
       });
 
-      const nextStep = ["scene", "curtain", "light", "message"].find((step) => {
-        if (step === "curtain") return !buildState.curtain;
-        return !buildState[step];
-      });
-
-      buildCards.forEach((card) => {
-        const step = card.dataset.buildCard;
-        const done = step === "curtain" ? buildState.curtain : Boolean(buildState[step]);
-        card.classList.toggle("is-done", done);
-        card.classList.toggle("is-current", !done && step === nextStep);
-      });
+      renderBuildFlow();
     }
 
     function runBuildAction(step, value) {
@@ -1236,6 +1472,7 @@
       if (step === "figure") buildState.figure = true;
       if (step === "light") buildState.light = value;
       if (step === "message") buildState.message = value;
+      currentBuildStepIndex = buildStepOrder.indexOf(getFirstIncompleteBuildStep());
       renderBuildStage();
     }
 
@@ -1328,6 +1565,31 @@
         runBuildAction(buildStep, buildValue);
       });
     });
+
+    buildNavButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const nextIndex = Number(button.dataset.buildNav);
+        if (Number.isNaN(nextIndex) || button.disabled) return;
+        currentBuildStepIndex = nextIndex;
+        renderBuildFlow();
+      });
+    });
+
+    if (buildPrevBtn) {
+      buildPrevBtn.addEventListener("click", () => {
+        currentBuildStepIndex = Math.max(0, currentBuildStepIndex - 1);
+        renderBuildFlow();
+      });
+    }
+
+    if (buildNextBtn) {
+      buildNextBtn.addEventListener("click", () => {
+        const currentStep = buildStepOrder[currentBuildStepIndex];
+        if (!isBuildStepDone(currentStep)) return;
+        currentBuildStepIndex = Math.min(buildStepOrder.length - 1, currentBuildStepIndex + 1);
+        renderBuildFlow();
+      });
+    }
 
     applyRoom(activeRoom);
     renderBuildStage();
